@@ -54,7 +54,7 @@ runs:
     # credential-free: fork PRs and any other run without secrets still pull.
     - name: Install Nix
       if: inputs.install-nix == 'true'
-      uses: cachix/install-nix-action@v31
+      uses: cachix/install-nix-action@3dc140bfc76c49fbd4dd958429132e3746bcb086 # v31
       with:
         extra_nix_config: |
           experimental-features = nix-command flakes
@@ -96,7 +96,7 @@ runs:
     # post step at the end of the job, pushing the store paths the job built.
     - name: Setup Attic push
       if: steps.select.outputs.token != '' && inputs.attic-endpoint != ''
-      uses: ryanccn/attic-action@v0.5.0
+      uses: ryanccn/attic-action@5635a15ef0c5462194ffbd05d1daeddc74625c3a # v0.5.0
       with:
         endpoint: ${{ inputs.attic-endpoint }}
         cache: ${{ steps.select.outputs.cache }}
